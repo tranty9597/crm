@@ -3,6 +3,8 @@ package com.crm;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import io.realm.react.RealmReactPackage;
+import com.reactcommunity.rnlanguages.RNLanguagesPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.horcrux.svg.SvgPackage;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
@@ -30,6 +32,8 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new RealmReactPackage(),
+            new RNLanguagesPackage(),
             new RNI18nPackage(),
             new SvgPackage(),
             new RNFusedLocationPackage(),

@@ -92,6 +92,8 @@ PODS:
     - React/RCTBlob
   - RNI18n (2.0.15):
     - React
+  - RNLanguages (3.0.1):
+    - React
   - RNSVG (8.0.8):
     - React
   - yoga (0.57.3.React)
@@ -120,6 +122,7 @@ DEPENDENCIES:
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - RNI18n (from `../node_modules/react-native-i18n`)
+  - RNLanguages (from `../node_modules/react-native-languages`)
   - RNSVG (from `../node_modules/react-native-svg`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -148,6 +151,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-splash-screen"
   RNI18n:
     :path: "../node_modules/react-native-i18n"
+  RNLanguages:
+    :path: "../node_modules/react-native-languages"
   RNSVG:
     :path: "../node_modules/react-native-svg"
   yoga:
@@ -166,9 +171,10 @@ SPEC CHECKSUMS:
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
   RNI18n: 46b8694063fbd699f2c06a4dc8e835b3176763b1
+  RNLanguages: e3ae05ef105937645218272429dac0c3f7633451
   RNSVG: 6252323c0312735f0af5f58b5adf2965b6a9ffbf
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 3f31ca61898701cfa121dc8559f9dffe96a0dbbd
+PODFILE CHECKSUM: f0b083b6802d54cec21b07ab1fd2b956093dec9e
 
 COCOAPODS: 1.5.3
