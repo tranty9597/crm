@@ -42,6 +42,8 @@ target 'crm' do
 
   pod 'RNLanguages', :path => '../node_modules/react-native-languages'
 
+  pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
+
 end
 
 post_install do |installer|

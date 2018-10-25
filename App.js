@@ -6,15 +6,16 @@
  * @flow
  */
 
-import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react';
+
 import SplashScreen from "react-native-splash-screen"
 
 import { Provider } from 'react-redux'
 
 import { pushNotificationConfigue } from './src/pushNotification'
+import AppNavigation from './src/navigation';
 
-export default class App extends Component {
+export default class App extends React.Component {
   componentDidMount() {
 
     pushNotificationConfigue();
@@ -24,31 +25,12 @@ export default class App extends Component {
   render() {
 
     return (
-      <Provider>
-        
-      </Provider>
+      // <Provider>
+
+      // </Provider>
+      <AppNavigation />
+
     );
   }
-
-  takePicture = async function () {
-    if (this.camera) {
-      const options = { quality: 0.5, base64: true };
-      const data = await this.camera.takePictureAsync(options)
-      console.log(data.uri);
-    }
-  };
 }
 
-const styles = StyleSheet.create({
-  container: {
-    ...StyleSheet.absoluteFillObject,
-    height: 400,
-    width: 400,
-    justifyContent: 'flex-end',
-    alignItems: 'center',
-  },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
-
-});
