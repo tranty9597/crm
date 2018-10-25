@@ -138,8 +138,8 @@ android {
 }
 
 dependencies {
-    compile project(':react-native-linear-gradient')
-    compile project(':realm')
+    implementation project(':react-native-linear-gradient')
+    implementation project(':realm')
     implementation project(':react-native-languages')
     implementation project(':react-native-i18n')
     implementation project(':react-native-svg')

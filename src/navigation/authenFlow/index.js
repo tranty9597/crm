@@ -1,15 +1,13 @@
 import { createStackNavigator } from 'react-navigation'
 
-import { LoginAndRegister } from '../../screens'
+import { authRoutes } from "../routers"
 
 const AuthenFlow = createStackNavigator(
-    {
-        LoginAndRegister
-    },
+    authRoutes,
     {
         navigationOptions: {
             header: null,
-            
+
         }
     }
 )

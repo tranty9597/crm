@@ -98,6 +98,8 @@ PODS:
     - React
   - RNSVG (8.0.8):
     - React
+  - RNVectorIcons (6.0.2):
+    - React
   - yoga (0.57.3.React)
 
 DEPENDENCIES:
@@ -127,6 +129,7 @@ DEPENDENCIES:
   - RNI18n (from `../node_modules/react-native-i18n`)
   - RNLanguages (from `../node_modules/react-native-languages`)
   - RNSVG (from `../node_modules/react-native-svg`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -160,6 +163,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-languages"
   RNSVG:
     :path: "../node_modules/react-native-svg"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -179,8 +184,9 @@ SPEC CHECKSUMS:
   RNI18n: 46b8694063fbd699f2c06a4dc8e835b3176763b1
   RNLanguages: e3ae05ef105937645218272429dac0c3f7633451
   RNSVG: 6252323c0312735f0af5f58b5adf2965b6a9ffbf
+  RNVectorIcons: 8c52e1e8da1153613fdef44748e865c25556cb9c
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: c1acf7f8305bc6466d974fc1c5a76fe48ad7519f
+PODFILE CHECKSUM: 1ea7a851f2139cddad49bc2e8547916bdb9609df
 
 COCOAPODS: 1.5.3
