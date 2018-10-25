@@ -13,6 +13,9 @@ import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import PushNotification from "react-native-push-notification"
 import { RNCamera } from 'react-native-camera';
 import Geolocation from 'react-native-geolocation-service';
+
+import Barcode from 'react-native-barcode-builder';
+
 PushNotification.configure({
 
   // (optional) Called when Token is generated (iOS and Android)
@@ -86,27 +89,8 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <RNCamera
-            ref={ref => {
-              this.camera = ref;
-            }}
-            style = {styles.preview}
-            type={RNCamera.Constants.Type.back}
-            // flashMode={RNCamera.Constants.FlashMode.on}
-            permissionDialogTitle={'Permission to use camera'}
-            permissionDialogMessage={'We need your permission to use your camera phone'}
-            onGoogleVisionBarcodesDetected={({ barcodes }) => {
-              console.log(barcodes)
-            }}
-        />
-        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
-        <TouchableOpacity
-            onPress={this.takePicture.bind(this)}
-            style = {styles.capture}
-        >
-            <Text style={{fontSize: 14}}> SNAP </Text>
-        </TouchableOpacity>
-        </View>
+       <Barcode  value="3423432424234" format="CODE128" />
+        
       </View>
     );
   }
@@ -124,20 +108,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'black'
+    backgroundColor:'red'
   },
-  preview: {
-    flex: 1,
-    justifyContent: 'flex-end',
-    alignItems: 'center'
-  },
-  capture: {
-    flex: 0,
-    backgroundColor: '#fff',
-    borderRadius: 5,
-    padding: 15,
-    paddingHorizontal: 20,
-    alignSelf: 'center',
-    margin: 20
-  }
+
 });

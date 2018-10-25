@@ -138,6 +138,7 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-svg')
     implementation project(':react-native-geolocation-service')
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"

@@ -90,6 +90,8 @@ PODS:
     - React/Core
     - React/fishhook
     - React/RCTBlob
+  - RNSVG (8.0.8):
+    - React
   - yoga (0.57.3.React)
 
 DEPENDENCIES:
@@ -115,6 +117,7 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTVibration (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
+  - RNSVG (from `../node_modules/react-native-svg`)
   - yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -140,6 +143,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-maps"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
+  RNSVG:
+    :path: "../node_modules/react-native-svg"
   yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -155,8 +160,9 @@ SPEC CHECKSUMS:
   react-native-google-maps: b946d62e25dc66097921ed82520e45b0b081768a
   react-native-maps: 066c2afcc89e18726377bcc685315f989ca22449
   react-native-splash-screen: 8e3f866dc79bfe533baeffd0a38c33f7a7eae7f8
+  RNSVG: 6252323c0312735f0af5f58b5adf2965b6a9ffbf
   yoga: b1ce48b6cf950b98deae82838f5173ea7cf89e85
 
-PODFILE CHECKSUM: 0f18b43520aad288d7f766ca97471b294d9b06c1
+PODFILE CHECKSUM: 3f40cf87163fc1caf79ef77843e8bc7e81d98d21
 
 COCOAPODS: 1.5.3
