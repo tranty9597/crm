@@ -12,7 +12,7 @@ import SplashScreen from "react-native-splash-screen"
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import PushNotification from "react-native-push-notification"
 import { RNCamera } from 'react-native-camera';
-
+import Geolocation from 'react-native-geolocation-service';
 PushNotification.configure({
 
   // (optional) Called when Token is generated (iOS and Android)
@@ -69,6 +69,19 @@ export default class App extends Component {
       message: "My Notification Message", // (required)
       date: new Date(Date.now() + (10 * 1000)) // in 60 secs
     });
+    Geolocation.getCurrentPosition(
+      (position) => {
+        console.log("sss", position)
+         PushNotification.localNotification({
+           message: "tessst"
+         })
+      },
+      (error) => {
+          // See error code charts below.
+          console.log(error.code, error.message);
+      },
+      { enableHighAccuracy: true, timeout: 15000, maximumAge: 10000 }
+  );
   }
   render() {
     return (
