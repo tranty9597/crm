@@ -7,11 +7,11 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, PushNotificationIOS } from 'react-native';
+import { Platform, StyleSheet, Text, View, PushNotificationIOS, TouchableOpacity } from 'react-native';
 import SplashScreen from "react-native-splash-screen"
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps';
 import PushNotification from "react-native-push-notification"
-
+import { RNCamera } from 'react-native-camera';
 
 PushNotification.configure({
 
@@ -73,31 +73,58 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <MapView
-          provider={PROVIDER_GOOGLE} // remove if not using Google Maps
-          style={styles.map}
-          region={{
-            latitude: 37.78825,
-            longitude: -122.4324,
-            latitudeDelta: 0.015,
-            longitudeDelta: 0.0121,
-          }}
+        <RNCamera
+            ref={ref => {
+              this.camera = ref;
+            }}
+            style = {styles.preview}
+            type={RNCamera.Constants.Type.back}
+            // flashMode={RNCamera.Constants.FlashMode.on}
+            permissionDialogTitle={'Permission to use camera'}
+            permissionDialogMessage={'We need your permission to use your camera phone'}
+            onGoogleVisionBarcodesDetected={({ barcodes }) => {
+              console.log(barcodes)
+            }}
+        />
+        <View style={{flex: 0, flexDirection: 'row', justifyContent: 'center',}}>
+        <TouchableOpacity
+            onPress={this.takePicture.bind(this)}
+            style = {styles.capture}
         >
-        </MapView>
+            <Text style={{fontSize: 14}}> SNAP </Text>
+        </TouchableOpacity>
+        </View>
       </View>
     );
   }
+
+  takePicture = async function() {
+    if (this.camera) {
+      const options = { quality: 0.5, base64: true };
+      const data = await this.camera.takePictureAsync(options)
+      console.log(data.uri);
+    }
+  };
 }
 
 const styles = StyleSheet.create({
   container: {
-    ...StyleSheet.absoluteFillObject,
-    height: '100%',
-    width: '100%',
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'black'
+  },
+  preview: {
+    flex: 1,
     justifyContent: 'flex-end',
-    alignItems: 'center',
+    alignItems: 'center'
   },
-  map: {
-    ...StyleSheet.absoluteFillObject,
-  },
+  capture: {
+    flex: 0,
+    backgroundColor: '#fff',
+    borderRadius: 5,
+    padding: 15,
+    paddingHorizontal: 20,
+    alignSelf: 'center',
+    margin: 20
+  }
 });
