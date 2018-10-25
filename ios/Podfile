@@ -38,6 +38,8 @@ target 'crm' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNI18n', :path => '../node_modules/react-native-i18n'
+
 end
 
 post_install do |installer|
