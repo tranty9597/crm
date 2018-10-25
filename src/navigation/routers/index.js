@@ -5,8 +5,21 @@ const authRoutes = {
 }
 
 const mainBottomTabRoutes ={
-    Profile,
-    Notification
+    Profile: {
+        screen: Profile
+    },
+    Profile1: {
+        screen: Profile
+    },
+    Profile2: {
+        screen: Profile
+    },
+    Profile3: {
+        screen: Profile
+    },
+    Notification: {
+        screen: Notification
+    }
 }
 
 

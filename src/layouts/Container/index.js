@@ -6,7 +6,8 @@ import { View, StyleSheet, StatusBar } from 'react-native'
 import { Color, Device } from '../../values'
 
 type ContainerProps = {
-    transclude: Boolean
+    transclude: Boolean,
+    style: StyleSheet
 }
 
 const TRANCLUDE_PADDING_TOP = 0
@@ -14,9 +15,9 @@ const TRANCLUDE_PADDING_TOP = 0
 class Container extends React.PureComponent<ContainerProps> {
 
     render() {
-        let { children, transclude } = this.props
+        let { children, transclude, style } = this.props
         return (
-            <View style={[styles.container, {paddingTop: transclude ? TRANCLUDE_PADDING_TOP : Device.statusBarHeight}]}>
+            <View style={[styles.container, style]}>
                 {children}
             </View>
         )
@@ -26,7 +27,6 @@ class Container extends React.PureComponent<ContainerProps> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: Color.white
     }
 })
 
