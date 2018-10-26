@@ -5,8 +5,10 @@ import { NavigationAction } from 'react-navigation'
 
 import { connect } from 'react-redux'
 
-import { } from '../../../../common'
+import { Button } from '../../../../common'
 
+import { AppStyle, Color } from '../../../../values'
+import { strings } from '../../../../i18n'
 
 class Login extends React.Component {
     constructor(props) {
@@ -15,12 +17,14 @@ class Login extends React.Component {
     }
 
     render() {
-        console.log("3", this.props)
         return (
-            <View style={{flex: 1}}>
-                <TouchableOpacity title='buton' onPress={() => this.props.navigation.navigate('Dashboard')}>
-                    <Text >Login</Text>
-                </TouchableOpacity>
+            <View style={[AppStyle.container]}>
+                <Button
+                    bgColor={[]}
+                    disabled
+                    title={strings('loginAndRegiter_login_login')}
+                    onPress={() => this.props.navigation.navigate('Dashboard')}
+                />
             </View>
 
         )

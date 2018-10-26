@@ -1,27 +1,28 @@
 import React from 'react'
-import { View, StyleSheet, TouchableWithoutFeedback, Image, Keyboard, Text } from 'react-native'
+import { StyleSheet, TouchableWithoutFeedback, Image, Keyboard, Text, TouchableOpacity } from 'react-native'
 
 import AppLinearGradient from '../AppLinearGradient'
 
-import { Color, Device, AppStyle } from '../../values'
+import { AppStyle, Color, Sizes, Device } from '../../values'
 
 
 type HeaderProps = {
     rightIcon: any,
     leftIcon: any,
-    title: string
+    title: string,
+    rightText: string,
+    leftText: string
 }
 
-const HEIGHT = 60 + Device.statusBarHeight
-
-function RenderBtn({ icon, onPress }) {
+function RenderBtn({ icon, onPress, isLeft, text }) {
     return (
         <React.Fragment>
-            {icon && <TouchableOpacity
-                style={[AppStyle.flexCenter, styles.iconContainer]}
+            {(icon || text) && <TouchableOpacity
+                style={[styles.iconContainer, isLeft ? { left: 15 } : { right: 15, alignItems: 'flex-end' }]}
                 onPress={onPress}
             >
-                <Image source={lefIcon} />
+                {icon && <Image source={icon} />}
+                {text && <Text style={[AppStyle.mdText, AppStyle.lightWeight, { color: Color.white }]}>{text}</Text>}
             </TouchableOpacity>}
         </React.Fragment>
     )
@@ -30,16 +31,16 @@ function RenderBtn({ icon, onPress }) {
 class Header extends React.PureComponent<HeaderProps> {
 
     render() {
-        let { title, lefIcon, rightIcon } = this.props;
+        let { rightText, leftText, title, lefIcon = require('../../assets/image/whiteBack/whiteBack.png'), rightIcon } = this.props;
         return (
 
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <AppLinearGradient style={[styles.container]}>
-                    <RenderBtn icon={lefIcon} onPress={() => { }} />
+                    <RenderBtn text={leftText} isLeft icon={lefIcon} onPress={() => { }} />
                     <Text style={[styles.titleContainer]}>
                         {title}
                     </Text>
-                    <RenderBtn icon={rightIcon} onPress={() => { }} />
+                    <RenderBtn text={rightText} icon={rightIcon} onPress={() => { }} />
                 </AppLinearGradient>
             </TouchableWithoutFeedback>
         )
@@ -48,16 +49,21 @@ class Header extends React.PureComponent<HeaderProps> {
 
 const styles = StyleSheet.create({
     container: {
-        height: HEIGHT,
-        padding: Device.statusBarHeight,
+        ...AppStyle.flexCenter,
+        position: 'relative',
+        height: Sizes.HEADER_HEIGHT,
+        paddingTop: Device.statusBarHeight,
     },
     iconContainer: {
-        flex: 2,
+        ...AppStyle.justifyContentCenter,
+        position: 'absolute',
+        width: '15%',
+        bottom: 0,
         height: '100%'
     },
     titleContainer: {
-        flex: 6,
-        height: '100%'
+        ...AppStyle.title,
+        color: Color.white
     }
 })
 

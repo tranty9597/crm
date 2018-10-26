@@ -1,12 +1,11 @@
 import React from 'react'
-import { View, Text } from 'react-native'
-
-import { getStatusBarHeight } from 'react-native-status-bar-height';
 
 import { Header } from '../../common'
 
 import { Tab } from './components'
 import { Container } from '../../layouts';
+
+import { strings } from '../../i18n'
 
 class LoginAndRegister extends React.Component {
     constructor(props) {
@@ -16,10 +15,10 @@ class LoginAndRegister extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
-                <Header />
-                <Tab navigation={this.props.navigation}/>
-            </React.Fragment>
+            <Container>
+                <Header rightText='Huy' title={strings('loginAndRegiter_title')} />
+                <Tab navigation={this.props.navigation} />
+            </Container>
         )
     }
 }
