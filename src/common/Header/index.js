@@ -12,6 +12,8 @@ type HeaderProps = {
     title: string
 }
 
+const HEIGHT = 60 + Device.statusBarHeight
+
 function RenderBtn({ icon, onPress }) {
     return (
         <React.Fragment>
@@ -46,7 +48,7 @@ class Header extends React.PureComponent<HeaderProps> {
 
 const styles = StyleSheet.create({
     container: {
-        height: 40 + Device.statusBarHeight,
+        height: HEIGHT,
         padding: Device.statusBarHeight,
     },
     iconContainer: {

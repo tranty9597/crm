@@ -8,9 +8,9 @@ import { Container } from '../../layouts';
 import { Color } from '../../values';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-class Profile extends React.Component {
+class DashBoard extends React.Component {
     static navigationOptions = {
-        tabBarIcon: (focused) => <Icon name='home' size={24} color={focused ? Color.redOrange : null}/>
+        tabBarIcon: (focused) => <Icon name='rocket' size={24} color={focused ? Color.redOrange : Color.black} />
     }
     constructor(props) {
         super(props);
@@ -19,11 +19,12 @@ class Profile extends React.Component {
 
     render() {
         return (
-            <Container header={<Header />}  style={{ backgroundColor: Color.whiteGray }}>
-                <Text> Profile</Text>
+            <Container header={<Header />} style={{ backgroundColor: Color.whiteGray }}>
+
+                <Text> DashBoard</Text>
             </Container>
         )
     }
 }
 
-export default Profile;
+export default DashBoard;

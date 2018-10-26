@@ -1,24 +1,28 @@
 import React from 'react'
-import {} from 'react-navigation'
-
-import { View, StyleSheet, StatusBar } from 'react-native'
-
-import { Color, Device } from '../../values'
+import { View, StyleSheet } from 'react-native'
 
 type ContainerProps = {
-    transclude: Boolean,
-    style: StyleSheet
+    style: StyleSheet,
+    header: Node
 }
 
-const TRANCLUDE_PADDING_TOP = 0
-
 class Container extends React.PureComponent<ContainerProps> {
-
+    constructor(props) {
+        super(props);
+        this.state = { active: false }
+    }
+    componentDidMount() {
+        setTimeout(() => {
+            this.setState({ active: true })
+        }, 50);
+    }
     render() {
-        let { children, transclude, style } = this.props
+        let { header, children, style } = this.props
+        let { active } = this.state
         return (
             <View style={[styles.container, style]}>
-                {children}
+                {header}
+                {active && children}
             </View>
         )
     }

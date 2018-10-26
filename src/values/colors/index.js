@@ -7,5 +7,6 @@ export default {
     scarlet20: 'rgba(219,7,15, 0.2)',
     greyish: '#ababab',
     sunflowerYellow: '#ffd600',
-    shamrockGreen: '#07db4f'
+    shamrockGreen: '#07db4f',
+    transparent: 'transparent'
 }

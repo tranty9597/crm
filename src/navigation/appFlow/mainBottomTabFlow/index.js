@@ -3,9 +3,7 @@ import { createBottomTabNavigator } from 'react-navigation'
 import { mainBottomTabRoutes } from '../../routers'
 import { Color } from '../../../values';
 
-const MainBottomTabFlow = createBottomTabNavigator({
-    ...mainBottomTabRoutes
-},
+const MainBottomTabFlow = createBottomTabNavigator(mainBottomTabRoutes,
     {
         initialRouteName: 'Profile',
         tabBarOptions:{

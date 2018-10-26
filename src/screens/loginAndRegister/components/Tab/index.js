@@ -10,6 +10,14 @@ import Register from '../Register'
 
 import { Device, Color } from '../../../../values'
 
+function LoginRoute(navigation) {
+    return () => <Login navigation={navigation} />
+}
+
+function RegisterRoute(navigation) {
+    return () => <Register navigation={navigation} />
+}
+
 
 class Tab extends React.Component {
     constructor(props) {
@@ -24,14 +32,15 @@ class Tab extends React.Component {
     }
 
     render() {
+        console.log("2", this.props.navigation)
         return (
             <TabView
-                
+
                 onIndexChange={index => this.setState({ index })}
                 navigationState={this.state}
                 renderScene={SceneMap({
-                    Login: Login,
-                    Register: Register
+                    Login: LoginRoute(this.props.navigation),
+                    Register: RegisterRoute(this.props.navigation)
                 })}
                 initialLayout={{ width: Device.screenWidth, height: 200 }}
             />

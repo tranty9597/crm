@@ -17,8 +17,7 @@ class Notification extends React.Component {
 
     render() {
         return (
-            <Container style={{backgroundColor: Color.whiteGray}}>
-                <Header />
+            <Container header={<Header />}  style={{backgroundColor: Color.whiteGray}}>
                 <Text> Notification</Text>
                 <Icon.Button name="facebook" backgroundColor="#3b5998">
                     <Text style={{ fontFamily: 'Arial', fontSize: 15 }}>Login with Facebook</Text>

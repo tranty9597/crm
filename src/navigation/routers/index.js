@@ -1,4 +1,4 @@
-import { LoginAndRegister, Profile, Notification } from '../../screens'
+import { LoginAndRegister, Profile, Notification, Dashboard } from '../../screens'
 
 const authRoutes = {
     LoginAndRegister
@@ -8,8 +8,8 @@ const mainBottomTabRoutes ={
     Profile: {
         screen: Profile
     },
-    Profile1: {
-        screen: Profile
+    Dashboard: {
+        screen: Dashboard
     },
     Profile2: {
         screen: Profile

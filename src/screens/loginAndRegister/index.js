@@ -18,7 +18,7 @@ class LoginAndRegister extends React.Component {
         return (
             <React.Fragment>
                 <Header />
-                <Tab />
+                <Tab navigation={this.props.navigation}/>
             </React.Fragment>
         )
     }

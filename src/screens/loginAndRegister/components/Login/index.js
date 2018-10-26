@@ -1,5 +1,7 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
+
+import { NavigationAction } from 'react-navigation'
 
 import { connect } from 'react-redux'
 
@@ -13,10 +15,14 @@ class Login extends React.Component {
     }
 
     render() {
+        console.log("3", this.props)
         return (
-            <View>
-                <Text>Login</Text>
+            <View style={{flex: 1}}>
+                <TouchableOpacity title='buton' onPress={() => this.props.navigation.navigate('Dashboard')}>
+                    <Text >Login</Text>
+                </TouchableOpacity>
             </View>
+
         )
     }
 }
