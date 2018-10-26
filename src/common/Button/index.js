@@ -39,8 +39,8 @@ class Button extends React.PureComponent<ButtonProps> {
     }
 
     render() {
-        let { bgColor, disabled, style, title, rightIcon = require('../../assets/image/whiteBack/whiteBack.png'), leftIcon = require('../../assets/image/whiteBack/whiteBack.png'), type = 0 } = this.props;
-        if(disabled){
+        let { bgColor, disabled, style, title, rightIcon, leftIcon, type = 0 } = this.props;
+        if (disabled) {
             bgColor = null;
             type = 2
         }

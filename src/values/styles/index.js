@@ -37,7 +37,7 @@ export default StyleSheet.create({
     },
     //Text
     smText: {
-        fontSize: 12,
+        fontSize: 14,
         fontWeight: FONT_WEIGHT_DF
     },
     mdText: {
@@ -54,5 +54,8 @@ export default StyleSheet.create({
     },
     lightWeight: {
         fontWeight: '400'
+    },
+    mdWeight: {
+        fontWeight: '600'
     }
 })

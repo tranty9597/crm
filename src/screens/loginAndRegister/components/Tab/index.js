@@ -32,10 +32,9 @@ class Tab extends React.Component {
     }
 
     render() {
-        console.log("2", this.props.navigation)
         return (
             <TabView
-
+                style={{backgroundColor: Color.white}}
                 onIndexChange={index => this.setState({ index })}
                 navigationState={this.state}
                 renderScene={SceneMap({

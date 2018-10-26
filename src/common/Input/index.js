@@ -3,7 +3,7 @@
  *
  *
  * @file   This files defines the Cart - actions redux.
- * @author 2TS
+ * @author Tytv
  * @since  10/15/2018
  */
 import React from "react";
@@ -16,18 +16,22 @@ import {
   Image
 } from "react-native";
 
-import { InputHelper } from "../../utils";
+import { Color, Sizes, AppStyle } from "../../values";
 
-import {
-  ViewStyles,
-  TextStyles,
-  AppColor,
-  InputStyles,
+function RenderBtn({ icon, onPress, isLeft }) {
+  return (
+    <React.Fragment>
+      {icon && <TouchableOpacity
+        style={[styles.iconContainer, isLeft ? { left: 15 } : { right: 15, alignItems: 'flex-end' }]}
+        onPress={onPress}
+      >
+        <Image source={icon} />
+      </TouchableOpacity>}
+    </React.Fragment>
+  )
+}
 
-} from "../../styles";
-import I18n from "../../i18n";
-
-class DeptInput extends React.Component {
+class Input extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -42,13 +46,12 @@ class DeptInput extends React.Component {
   }
 
   render() {
+
+    let { leftIcon, rightIcon, style, label } = this.props
+
     let secureText = this.state.secureText && this.props.secureTextEntry;
     let inputComp = secureText ? <TextInput
-      maxLength={
-        this.props.keyboardType === "phone-pad"
-          ? 20
-          : this.props.maxLength
-      }
+      maxLength={this.props.maxLength}
       placeholderTextColor={this.props.placeholderStyle}
       autoFocus={this.props.autoFocus}
       multiline={this.props.multiline}
@@ -60,14 +63,10 @@ class DeptInput extends React.Component {
       secureTextEntry={true}
       placeholder={this.props.placeholder}
       value={this.props.value}
-      underlineColorAndroid="transparent"
-      style={[InputStyles.inputStyle, TextStyles.mediumSize, this.props.styleTextInput,]}
+      underlineColorAndroid={Color.transparent}
+      style={[styles.inputContainer]}
     /> : <TextInput
-        maxLength={
-          this.props.keyboardType === "phone-pad"
-            ? 12
-            : this.props.maxLength
-        }
+        maxLength={this.props.maxLength}
         onFocus={this.props.onFocus}
         ref={(inst) => this.input = inst}
         placeholderTextColor={this.props.placeholderStyle}
@@ -81,62 +80,39 @@ class DeptInput extends React.Component {
         secureTextEntry={false}
         placeholder={this.props.placeholder}
         value={this.props.value}
-        underlineColorAndroid="transparent"
+        underlineColorAndroid={Color.transparent}
         onBlur={this.props.onBlur}
         onKeyPress={(e) => this.props.onKeyPress(e)}
         defaultValue={this.props.defaultValue}
-        style={[InputStyles.inputStyle,
-        TextStyles.mediumSize,
-        this.props.styleTextInput,
-        ]}
+        style={[styles.inputContainer]}
       />
     return (
-      <View style={{}}>
-        <View style={[this.props.parentStyle,]}>
-          <View
-            style={[
-              InputStyles.inputContainer,
-              ViewStyles.flexCenterVertical,
-              styles.input,
-              this.props.containerStyle,
-            ]}
-          >
-            {this.props.searchIcon && (
-              <TouchableOpacity
-                style={styles.leftIcon}
-              >
-                <Image source={require("../../assets/images/blue/search/search.png")}>
-                </Image>
-              </TouchableOpacity>
-            )}
-            {inputComp}
-
-            {(this.props.secureTextEntry && this.props.canShowPass) && (
-              <TouchableOpacity
-                onPress={() => { this.showHidePassHandler() }
-                }
-                style={{ position: "absolute", right: 7 }}
-              >
-                <Text style={[TextStyles.mediumSize, { color: AppColor.blue }]}>
-                  {secureText ? I18n.t('txt_show') : I18n.t('txt_hide')}
-                </Text>
-              </TouchableOpacity>
-            )}
-            {rightIcon && (
-              <TouchableOpacity
-                onPress={() => { this.directEvent() }
-                }
-                style={styles.rightIcon}
-              >
-                <Image source={require("../../assets/images/blue/drill/plus.png")} />
-
-              </TouchableOpacity>
-            )}
+      <View style={style}>
+        {label && <Text style={[AppStyle.smText, AppStyle.mdWeight, { marginBottom: Sizes.SM_GAP }]}>{label}</Text>}
+        <View
+          style={[styles.container]}
+        >
+          <RenderBtn isLeft icon={leftIcon} onPress={() => { }} />
+          {inputComp}
+          {(this.props.secureTextEntry && this.props.canShowPass) && (
+            <TouchableOpacity
+              onPress={() => { this.showHidePassHandler() }
+              }
+              style={{ position: "absolute", right: 7 }}
+            >
+              <Text style={[TextStyles.mediumSize, { color: AppColor.blue }]}>
+                {secureText ? I18n.t('txt_show') : I18n.t('txt_hide')}
+              </Text>
+            </TouchableOpacity>
+          )}
+          <RenderBtn icon={rightIcon} onPress={() => { }} />
+        </View>
       </View>
+
     );
   }
 }
-DeptInput.defaultProps = {
+Input.defaultProps = {
   autoCapitalize: "sentences",
   disableErrorText: false,
   errorText: "",
@@ -153,23 +129,27 @@ DeptInput.defaultProps = {
   defaultValue: ''
 };
 const styles = StyleSheet.create({
-  input: {
-    paddingRight: 30,
+  container: {
+    ...AppStyle.flexCenter,
+    position: 'relative',
+    height: Sizes.BUTTON_HEIGHT,
+    width: '100%',
+    borderRadius: Sizes.BORDER_RADIUS,
+    backgroundColor: Color.whiteGray
+  },
+  inputContainer: {
+    width: '85%',
+    backgroundColor: Color.transparent
   },
   errContainer: {
     paddingLeft: 18,
     paddingTop: 10,
   },
-  rightIcon: {
-    display: 'flex',
-    position: "absolute",
-    right: 15,
-    width: 55,
-    alignItems: 'flex-end',
-  },
-  leftIcon: {
-    position: "absolute",
-    left: 15
+  iconContainer: {
+    position: 'absolute',
+    ...AppStyle.flexCenter,
+    width: '10%',
+    height: '100%'
   }
 })
-export default DeptInput;
+export default Input;
