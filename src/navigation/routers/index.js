@@ -1,4 +1,4 @@
-import { LoginAndRegister, Profile, Notification, Dashboard, Message } from '../../screens'
+import { LoginAndRegister, Profile, Notification, Dashboard, Message, Map } from '../../screens'
 
 const authRoutes = {
     LoginAndRegister
@@ -8,7 +8,8 @@ const mainBottomTabRoutes = {
     Dashboard,
     Profile,
     Message,
-    Notification
+    Notification,
+    Map
 }
 
 
