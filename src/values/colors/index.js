@@ -8,5 +8,6 @@ export default {
     greyish: '#ababab',
     sunflowerYellow: '#ffd600',
     shamrockGreen: '#07db4f',
-    transparent: 'transparent'
+    transparent: 'transparent',
+    fb: '#4b72ba'
 }

@@ -1,4 +1,5 @@
 import { StyleSheet } from 'react-native'
+import { Sizes, Color } from '..';
 
 const FONT_WEIGHT_DF = '600'
 
@@ -11,6 +12,9 @@ export default StyleSheet.create({
         width: '100%',
         paddingRight: 30,
         paddingLeft: 30,
+    },
+    containerFluid: {
+        width: '100%'
     },
     flexCenter: {
         display: 'flex',
@@ -35,6 +39,11 @@ export default StyleSheet.create({
         display: 'flex',
 
     },
+    hr: {
+        borderBottomColor: Color.whiteGray,
+        borderBottomWidth: 3,
+        margin: Sizes.MD_GAP * 2,
+    },
     //Text
     smText: {
         fontSize: 14,
@@ -57,5 +66,15 @@ export default StyleSheet.create({
     },
     mdWeight: {
         fontWeight: '600'
+    },
+    //gap
+    marginTop: {
+        marginTop: Sizes.MD_GAP,
+    },
+    marginTop2x: {
+        marginTop: Sizes.MD_GAP * 2,
+    },
+    marginTop3x: {
+        marginTop: Sizes.MD_GAP * 3,
     }
 })

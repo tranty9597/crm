@@ -1,25 +1,14 @@
-import { LoginAndRegister, Profile, Notification, Dashboard } from '../../screens'
+import { LoginAndRegister, Profile, Notification, Dashboard, Message } from '../../screens'
 
 const authRoutes = {
     LoginAndRegister
 }
 
-const mainBottomTabRoutes ={
-    Profile: {
-        screen: Profile
-    },
-    Dashboard: {
-        screen: Dashboard
-    },
-    Profile2: {
-        screen: Profile
-    },
-    Profile3: {
-        screen: Profile
-    },
-    Notification: {
-        screen: Notification
-    }
+const mainBottomTabRoutes = {
+    Dashboard,
+    Profile,
+    Message,
+    Notification
 }
 
 

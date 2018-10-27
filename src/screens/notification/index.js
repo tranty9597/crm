@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { Image, Text } from 'react-native'
 
 import Icon from 'react-native-vector-icons/FontAwesome';
 
@@ -10,6 +10,11 @@ import { Container } from '../../layouts';
 import { Color } from '../../values';
 
 class Notification extends React.Component {
+    static navigationOptions = {
+        tabBarIcon: (focused) => {
+            return <Image source={focused.focused ? require('../../assets/image/noti/active.png') : require('../../assets/image/noti/inactive.png')} />
+        }
+    }
     constructor(props) {
         super(props);
         this.state = {}

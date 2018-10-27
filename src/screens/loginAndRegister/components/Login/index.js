@@ -19,21 +19,30 @@ class Login extends React.Component {
     render() {
         return (
             <KeyboardAwareScrollView style={styles.container}>
+                <Button
+                    bgColor={[Color.fb, Color.fb]}
+                    style={[AppStyle.marginTop2x]}
+                    leftIcon={require('../../../../assets/image/whiteBack/whiteBack.png')}
+                    title={strings('facebook')}
+                />
+                <Button
+                    style={[AppStyle.marginTop]}
+                    leftIcon={require('../../../../assets/image/google/google.png')}
+                    title={strings('gmail')}
+                />
+                <View style={[AppStyle.hr]} />
                 <View >
-                    <Input label={strings('fullName')} style={{ marginTop: 15 }} />
-                    <Input label={strings('phoneNumber')} style={{ marginTop: 15, }} />
-                    <Input label={strings('phoneNumber')} style={{ marginTop: 15, }} />
-                    <Input label={strings('phoneNumber')} style={{ marginTop: 15, }} />
-                    <Input label={strings('phoneNumber')} style={{ marginTop: 15, }} />
-                    <Input label={strings('phoneNumber')} style={{ marginTop: 15, }} />
+                    <Input label={strings('fullName')} style={[AppStyle.marginTop]} />
+                    <Input label={strings('phoneNumber')} style={[AppStyle.marginTop]} />
                     <Button
                         style={styles.loginBtn}
                         disabled
-                        title={strings('loginAndRegiter_login_login')}
+                        title={strings('login')}
                         onPress={() => this.props.navigation.navigate('Dashboard')}
                     />
                 </View>
             </KeyboardAwareScrollView>
+
         )
     }
 }
@@ -43,10 +52,13 @@ const styles = StyleSheet.create({
         height: '100%',
         backgroundColor: Color.white
     },
-    loginBtn:{
-        width: '50%', 
+    form: {
+
+    },
+    loginBtn: {
+        width: '50%',
         marginLeft: '25%',
-        marginTop: Sizes.MD_GAP
+        ...AppStyle.marginTop3x
     }
 })
 

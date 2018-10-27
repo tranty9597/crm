@@ -3,16 +3,14 @@ import { Image, Text } from 'react-native'
 
 import { Header } from '../../common'
 
-// import {  } from './components'
 import { Container } from '../../layouts';
 import { Color } from '../../values';
 
 
-class DashBoard extends React.Component {
+class Message extends React.Component {
     static navigationOptions = {
         tabBarIcon: (focused) => {
-            console.log('foc', focused);
-            return <Image source={focused.focused ? require('../../assets/image/home/active.png') : require('../../assets/image/home/normal.png')} />
+            return <Image source={focused.focused ? require('../../assets/image/message/active.png') : require('../../assets/image/message/inactive.png')} />
         }
     }
     constructor(props) {
@@ -24,10 +22,10 @@ class DashBoard extends React.Component {
         return (
             <Container header={<Header />} style={{ backgroundColor: Color.whiteGray }}>
 
-                <Text> DashBoard</Text>
+                <Text> Message</Text>
             </Container>
         )
     }
 }
 
-export default DashBoard;
+export default Message;

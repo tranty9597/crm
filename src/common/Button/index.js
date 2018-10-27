@@ -30,7 +30,10 @@ type ButtonProps = {
     type: 0 | 1,
     style: StyleSheet,
     disabled: boolean,
-    bgColor: any
+    bgColor: any,
+    leftIcon: any,
+    rightIcon: any,
+    onPress: Function,
 }
 
 class Button extends React.PureComponent<ButtonProps> {
@@ -39,7 +42,7 @@ class Button extends React.PureComponent<ButtonProps> {
     }
 
     render() {
-        let { bgColor, disabled, style, title, rightIcon, leftIcon, type = 0 } = this.props;
+        let { bgColor, disabled, style, title, rightIcon, leftIcon, type = 0, children } = this.props;
         if (disabled) {
             bgColor = null;
             type = 2
@@ -50,17 +53,24 @@ class Button extends React.PureComponent<ButtonProps> {
                 onPress={this.props.onPress}
                 style={[styles.container, style]}
             >
-                <LinearGradient colors={bgColor || BUTTON_TYPE[type].bg} style={[AppStyle.matchParent, AppStyle.flexCenter, { borderRadius: Sizes.BORDER_RADIUS, }]}>
-                    {leftIcon && (
-                        <Image style={[styles.leftIcon]} source={leftIcon} />
-                    )}
+                {children || (
+                    <LinearGradient
+                        start={{ x: 0, y: 1 }}
+                        end={{ x: 1, y: 0 }}
+                        colors={bgColor || BUTTON_TYPE[type].bg}
+                        style={[AppStyle.matchParent, AppStyle.flexCenter, { borderRadius: Sizes.BORDER_RADIUS, }]}
+                    >
+                        {leftIcon && (
+                            <Image style={[styles.leftIcon]} source={leftIcon} />
+                        )}
 
-                    <Text style={[styles.title, { color: BUTTON_TYPE[type].color }]}>{title}</Text>
+                        <Text style={[styles.title, { color: BUTTON_TYPE[type].color }]}>{title}</Text>
 
-                    {rightIcon && (
-                        <Image style={[styles.rightIcon]} source={rightIcon} />
-                    )}
-                </LinearGradient>
+                        {rightIcon && (
+                            <Image style={[styles.rightIcon]} source={rightIcon} />
+                        )}
+                    </LinearGradient>
+                )}
             </TouchableOpacity>
         );
     }
