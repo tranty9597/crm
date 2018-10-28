@@ -1,11 +1,26 @@
 import React from 'react'
-import { Image, Text } from 'react-native'
+import { Image } from 'react-native'
 
-import { Header } from '../../common'
+import { Header, Tab } from '../../common'
+import { SeenList, UnseenList } from './components'
 
 import { Container } from '../../layouts';
 import { Color } from '../../values';
 
+import { strings } from '../../i18n'
+
+function SeenRoute(navigation) {
+    return () => <SeenList navigation={navigation} />
+}
+
+function UnseenRoute(navigation) {
+    return () => <UnseenList navigation={navigation} />
+}
+
+const ROUTES = [
+    { key: 'UnSeen', title: strings('message_unseen') },
+    { key: 'Seen', title: strings('message_seen') },
+]
 
 class Message extends React.Component {
     static navigationOptions = {
@@ -19,10 +34,19 @@ class Message extends React.Component {
     }
 
     render() {
+        let header = (
+            <Header title={strings('message_title')} />
+        )
         return (
-            <Container header={<Header />} style={{ backgroundColor: Color.whiteGray }}>
+            <Container header={header} style={{ backgroundColor: Color.whiteGray }}>
+                <Tab
+                    routes={ROUTES}
+                    router={{
+                        UnSeen: UnseenRoute(this.props.navigation),
+                        Seen: SeenRoute(this.props.navigation)
 
-                <Text> Message</Text>
+                    }}
+                />
             </Container>
         )
     }

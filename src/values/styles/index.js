@@ -68,6 +68,9 @@ export default StyleSheet.create({
         fontWeight: '600'
     },
     //gap
+    marginTopSm:{
+        marginTop: Sizes.SM_GAP,
+    },
     marginTop: {
         marginTop: Sizes.MD_GAP,
     },

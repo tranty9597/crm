@@ -16,8 +16,15 @@ const loginAndRegister = {
   
 }
 
+const message = {
+  message_title: 'Tin nhắn của bạn',
+  message_seen: 'Đã xem',
+  message_unseen: 'Tin Mới'
+}
+
 const vi = {
   ...common,
-  ...loginAndRegister
+  ...loginAndRegister,
+  ...message
 };
 export default vi;

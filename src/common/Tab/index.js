@@ -4,6 +4,7 @@ import { Text } from 'react-native'
 import { TabView, SceneMap, TabBar } from 'react-native-tab-view';
 
 import { Device, Color, AppStyle, Sizes } from '../../values'
+import { screenHeight } from '../../values/device';
 
 type TabProps = {
     routes: Array,
@@ -29,14 +30,14 @@ class Tab extends React.PureComponent<TabProps> {
                 renderTabBar={props =>
                     <TabBar
                         {...props}
-                        style={{ backgroundColor: Color.white }}
+                        style={[{ backgroundColor: Color.white, height: 60, padding: 10 }]}
                         renderLabel={(props) => {
 
                             let { route } = props;
                             let isActiveRoute = routes[index].key === route.key
                             return (
                                 <Text
-                                    style={[AppStyle.mdText, { padding: Sizes.SM_GAP, color: isActiveRoute ? Color.black : Color.greyish }]}>
+                                    style={[AppStyle.mdText, AppStyle.lightWeight, { padding: Sizes.SM_GAP, color: isActiveRoute ? Color.black : Color.greyish }]}>
                                     {route.title}
                                 </Text>
                             )
@@ -47,7 +48,7 @@ class Tab extends React.PureComponent<TabProps> {
                 onIndexChange={this._onIndexChange}
                 navigationState={this.state}
                 renderScene={SceneMap(router)}
-                initialLayout={{ width: Device.screenWidth, height: 200 }}
+                initialLayout={{ width: Device.screenWidth, height: screenHeight * 0.2 }}
                 useNativeDriver
             />
         )
