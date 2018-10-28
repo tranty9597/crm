@@ -1,5 +1,5 @@
 import React from 'react'
-import { View, StyleSheet } from 'react-native'
+import { View, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
 
 type ContainerProps = {
     style: StyleSheet,
@@ -20,11 +20,22 @@ class Container extends React.PureComponent<ContainerProps> {
         let { header, children, style } = this.props
         let { active } = this.state
         return (
-            <View style={[styles.container, style]}>
-                {header}
-                {active && children}
-            </View>
+            <TouchableWithoutFeedback onPress={this._onPress}>
+                <React.Fragment>
+                    <View style={[styles.container, style]}>
+                        {header}
+                        {active && children}
+                    </View>
+                </React.Fragment>
+            </TouchableWithoutFeedback>
+
         )
+    }
+    /**
+     * @description Dissmiss keboard when press
+     */
+    _onPress = () =>{
+        Keyboard.dismiss()
     }
 }
 

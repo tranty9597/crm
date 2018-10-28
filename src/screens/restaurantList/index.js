@@ -4,7 +4,7 @@ import { Image, StyleSheet, View } from 'react-native'
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import Carousel from 'react-native-snap-carousel';
 
-import { } from '../../common'
+import { Header } from '../../common'
 
 import { Container } from '../../layouts';
 import { Color, AppStyle, Sizes, Device } from '../../values';
@@ -12,7 +12,7 @@ import { CarouselItem } from './components';
 import { getLocation } from '../../utils';
 import RenderMarkder from './components/Marker';
 
-class Map extends React.Component {
+class RestaurantList extends React.Component {
     static navigationOptions = {
         tabBarIcon: (focused) => {
             return <Image source={focused.focused ? require('../../assets/image/message/active.png') : require('../../assets/image/message/inactive.png')} />
@@ -67,7 +67,7 @@ class Map extends React.Component {
         let { curRegion, markers } = this.state;
         return (
             <Container style={styles.container}>
-
+                <Header/>
                 <MapView
                     region={curRegion}
                     provider={PROVIDER_GOOGLE}
@@ -102,8 +102,6 @@ class Map extends React.Component {
 const styles = StyleSheet.create({
     container: {
         ...AppStyle.matchParent,
-        backgroundColor: Color.redOrange,
-
     },
     map: {
         ...StyleSheet.absoluteFill,
@@ -118,4 +116,4 @@ const styles = StyleSheet.create({
         zIndex: 1
     }
 })
-export default Map;
+export default RestaurantList;
