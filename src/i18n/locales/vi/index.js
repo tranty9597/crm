@@ -9,11 +9,19 @@ const common= {
   facebook: 'Facebook',
   email: 'Email',
   password: 'Mật Khẩu',
-  register: 'Đăng kí'
+  register: 'Đăng kí',
+  continue: 'Tiếp Theo'
 }
 const loginAndRegister = {
   loginAndRegiter_title: 'Khách hàng thân thiết',
   
+}
+
+const passwordSetting = {
+  passwordSetting_title: 'Cài đặt mật khẩu',
+  passwordSetting_reenter_pass: 'Nhập lại mật khẩu',
+  passwordSetting_password_hint: 'Tối thiểu 6 kí tự',
+  passwordSetting_reenter_password_hint: 'Nhập lại mật khẩu ở trên'
 }
 
 const message = {
@@ -25,6 +33,8 @@ const message = {
 const vi = {
   ...common,
   ...loginAndRegister,
-  ...message
+  ...passwordSetting,
+  ...message,
+
 };
 export default vi;

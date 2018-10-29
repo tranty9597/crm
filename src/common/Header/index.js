@@ -8,17 +8,20 @@ import { AppStyle, Color, Sizes, Device } from '../../values'
 
 type HeaderProps = {
     rightIcon: any,
+    rightIconOnPress: func,
+    leftIconOnPress: func,
     leftIcon: any,
     title: string,
     rightText: string,
-    leftText: string
+    leftText: string,
+    colors: Array
 }
 
 function RenderBtn({ icon, onPress, isLeft, text }) {
     return (
         <React.Fragment>
             {(icon || text) && <TouchableOpacity
-                style={[styles.iconContainer, isLeft ? { left: 15 } : { right: 15, alignItems: 'flex-end' }]}
+                style={[styles.iconContainer, isLeft ? { left: Sizes.MD_GAP } : { right: Sizes.MD_GAP, alignItems: 'flex-end' }]}
                 onPress={onPress}
             >
                 {icon && <Image source={icon} />}
@@ -31,16 +34,16 @@ function RenderBtn({ icon, onPress, isLeft, text }) {
 class Header extends React.PureComponent<HeaderProps> {
 
     render() {
-        let { rightText, leftText, title, lefIcon = require('../../assets/image/whiteBack/whiteBack.png'), rightIcon } = this.props;
+        let { rightText, leftText, title, leftIcon, rightIcon, colors, leftIconOnPress, rightIconOnPress } = this.props;
         return (
 
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
-                <AppLinearGradient style={[styles.container]}>
-                    <RenderBtn text={leftText} isLeft icon={lefIcon} onPress={() => { }} />
+                <AppLinearGradient colors={colors} style={[styles.container]}>
+                    <RenderBtn text={leftText} isLeft icon={leftIcon} onPress={leftIconOnPress} />
                     <Text style={[styles.titleContainer]}>
                         {title}
                     </Text>
-                    <RenderBtn text={rightText} icon={rightIcon} onPress={() => { }} />
+                    <RenderBtn text={rightText} icon={rightIcon} onPress={rightIconOnPress} />
                 </AppLinearGradient>
             </TouchableWithoutFeedback>
         )

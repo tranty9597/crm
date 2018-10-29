@@ -36,9 +36,9 @@ class Login extends React.Component {
                     <Input label={strings('phoneNumber')} style={[AppStyle.marginTop]} />
                     <Button
                         style={styles.loginBtn}
-                        disabled
+                        // disabled
                         title={strings('login')}
-                        onPress={() => this.props.navigation.navigate('Dashboard')}
+                        onPress={() => this.props.navigation.navigate('PasswordSetting')}
                     />
                 </View>
             </KeyboardAwareScrollView>

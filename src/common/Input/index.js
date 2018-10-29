@@ -18,6 +18,14 @@ import {
 
 import { Color, Sizes, AppStyle } from "../../values";
 
+type InputProps = {
+  label: string,
+  style: Object,
+  leftIcon: any,
+  rightIcon: any,
+  placeholder: string
+}
+
 function RenderBtn({ icon, onPress, isLeft }) {
   return (
     <React.Fragment>
@@ -31,7 +39,7 @@ function RenderBtn({ icon, onPress, isLeft }) {
   )
 }
 
-class Input extends React.Component {
+class Input extends React.Component<InputProps> {
   constructor(props) {
     super(props);
     this.state = {

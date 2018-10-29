@@ -1,7 +1,8 @@
-import { LoginAndRegister, Profile, Notification, Dashboard, Message, RestaurantList } from '../../screens'
+import { LoginAndRegister, Profile, Notification, Dashboard, Message, RestaurantList, PasswordSetting } from '../../screens'
 
 const authRoutes = {
-    LoginAndRegister
+    LoginAndRegister,
+    PasswordSetting
 }
 
 const mainBottomTabRoutes = {
