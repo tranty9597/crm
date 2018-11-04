@@ -12,7 +12,6 @@ import com.horcrux.svg.SvgPackage;
 import com.agontuk.RNFusedLocation.RNFusedLocationPackage;
 import org.reactnative.camera.RNCameraPackage;
 import com.airbnb.android.react.maps.MapsPackage;
-import com.dieam.reactnativepushnotification.ReactNativePushNotificationPackage;
 import org.devio.rn.splashscreen.SplashScreenReactPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -43,7 +42,6 @@ public class MainApplication extends Application implements ReactApplication {
             new RNFusedLocationPackage(),
             new RNCameraPackage(),
             new MapsPackage(),
-            new ReactNativePushNotificationPackage(),
             new SplashScreenReactPackage()
       );
     }

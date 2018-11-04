@@ -13,14 +13,14 @@ import SplashScreen from "react-native-splash-screen"
 import { Provider } from 'react-redux'
 import store from './src/store'
 
-import { pushNotificationConfigue } from './src/configs'
+// import { pushNotificationConfigue } from './src/configs'
 import AppNavigation from './src/navigation';
 import { Color } from './src/values';
 
 class App extends React.Component {
 
   componentDidMount() {
-    pushNotificationConfigue();
+    // pushNotificationConfigue();
     SplashScreen.hide()
   }
   render() {
