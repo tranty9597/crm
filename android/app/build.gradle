@@ -140,6 +140,9 @@ android {
 }
 
 dependencies {
+    implementation project(':react-native-firebase')
+    implementation "com.google.android.gms:play-services-base:15.0.1"
+    implementation "com.google.firebase:firebase-core:16.0.3"
     implementation project(':react-native-cardview')
     implementation project(':react-native-linear-gradient')
     implementation project(':realm')
@@ -149,10 +152,10 @@ dependencies {
     implementation project(':react-native-geolocation-service')
     implementation (project(':react-native-camera')) {
         exclude group: "com.google.android.gms"
-        compile ('com.android.support:exifinterface:26.0.0-alpha1') {
+        implementation ('com.android.support:exifinterface:26.0.0-alpha1') {
             force = true;
         }
-        compile ("com.google.android.gms:play-services-vision:${rootProject.ext.googlePlayServicesVersion}") {
+        implementation ("com.google.android.gms:play-services-vision:${rootProject.ext.googlePlayServicesVersion}") {
             force = true
         }
     }
@@ -173,3 +176,4 @@ task copyDownloadableDepsToLibs(type: Copy) {
     from configurations.compile
     into 'libs'
 }
+apply plugin: 'com.google.gms.google-services'

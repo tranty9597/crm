@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "239913068720",
+    "firebase_url": "https://crmtest-dbbfc.firebaseio.com",
+    "project_id": "crmtest-dbbfc",
+    "storage_bucket": "crmtest-dbbfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:239913068720:android:38bf4b67dcd71b97",
+        "android_client_info": {
+          "package_name": "com.crm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "239913068720-90fmif2r2rlgvefms7pmu7i2gmfoe119.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArfi3cpmdW_T2ejdJeML3hpGjiXHHMNjI"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
