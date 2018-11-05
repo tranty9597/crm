@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file export all components from app
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 export { default as Button } from './Button'
 export { default as Header } from './Header'
 export { default as Input } from './Input'

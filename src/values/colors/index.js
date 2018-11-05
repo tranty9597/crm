@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the APP colors values.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 export default {
     white: '#ffffff',
     black: '#000000',

@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the Header class.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import React from 'react'
 import { StyleSheet, TouchableWithoutFeedback, Image, Keyboard, Text, TouchableOpacity } from 'react-native'
 

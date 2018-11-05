@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the Geolocation Service.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import Geolocation from 'react-native-geolocation-service';
 
 export function getLocation() {

@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the APP Devices values.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import { Platform, Dimensions, StatusBar } from 'react-native'
 
 const isIos = Platform.OS === 'ios';

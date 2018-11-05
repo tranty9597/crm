@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the push notification config.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import { PushNotificationIOS } from 'react-native';
 
 import PushNotification from "react-native-push-notification"

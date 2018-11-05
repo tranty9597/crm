@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the APP styles values.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import { StyleSheet } from 'react-native'
 import { Sizes, Color } from '..';
 

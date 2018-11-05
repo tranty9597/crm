@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the Container layout class.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import React from 'react'
 import { View, StyleSheet, TouchableWithoutFeedback, Keyboard } from 'react-native'
 
@@ -12,6 +20,7 @@ class Container extends React.PureComponent<ContainerProps> {
         this.state = { active: false }
     }
     componentDidMount() {
+        // children show after 50ms
         setTimeout(() => {
             this.setState({ active: true })
         }, 50);

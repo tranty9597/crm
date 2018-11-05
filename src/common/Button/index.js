@@ -1,9 +1,9 @@
 /**
- * Copyright by (c) 2TS 
+ * Copyright by (c) 2TS Group 
  *
  *
- * @file   This files defines the Cart - actions redux.
- * @author TyTV
+ * @file   This file defines the Button class.
+ * @author ADAMO
  * @since  10/15/2018
  */
 import React from "react";

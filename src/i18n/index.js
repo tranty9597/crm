@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines I18n instance.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import ReactNative from 'react-native';
 import I18n from 'react-native-i18n';
 

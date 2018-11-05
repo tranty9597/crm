@@ -1,6 +1,18 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the middleware for axios fetch.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import { Alert } from 'react-native'
 import store from '../../store'
 
+/**
+ * @description handle respond from api
+ * @param {*} res 
+ */
 export function handleRespond(res) {
     return new Promise((resolve, reject) => {
         switch (res.status) {
@@ -42,6 +54,10 @@ export function handleRespond(res) {
         }
     })
 }
+/**
+ * @description hanlde api rejection
+ * @param {*} err 
+ */
 export function handleRej(err) {
     return new Promise((resolve, reject) => {
         reject(err)

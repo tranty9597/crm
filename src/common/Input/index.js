@@ -1,9 +1,9 @@
 /**
- * Copyright by (c) 2TS 
+ * Copyright by (c) 2TS Group 
  *
  *
- * @file   This files defines the Cart - actions redux.
- * @author Tytv
+ * @file   This file defines the Input class.
+ * @author ADAMO
  * @since  10/15/2018
  */
 import React from "react";
@@ -25,7 +25,10 @@ type InputProps = {
   rightIcon: any,
   placeholder: string
 }
-
+/**
+ * @description render icon btn on input class
+ * @param {*} props
+ */
 function RenderBtn({ icon, onPress, isLeft }) {
   return (
     <React.Fragment>

@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the APP sizes values.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import { statusBarHeight } from '../device'
 
 export const BUTTON_HEIGHT = 40

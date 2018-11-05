@@ -1,3 +1,11 @@
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the Tab class.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 import React from 'react'
 import { Text } from 'react-native'
 
@@ -53,6 +61,10 @@ class Tab extends React.PureComponent<TabProps> {
             />
         )
     }
+    /**
+     * @description handle tab index change
+     * @param {*number} index
+     */
     _onIndexChange = (index) => {
         this.setState({ index })
     }

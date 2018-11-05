@@ -1,5 +1,13 @@
 
 
+/**
+ * Copyright by (c) 2TS Group 
+ *
+ *
+ * @file   This file defines the Vn locales.
+ * @author ADAMO
+ * @since  10/15/2018
+ */
 const common= {
   fullName: 'Họ và tên',
   phoneNumber: 'Số điện thoại',
