@@ -1,6 +1,15 @@
-import { LoginAndRegister, Profile, Notification, Dashboard, Message, RestaurantList, PasswordSetting } from '../../screens'
+import {
+    LoginAndRegister,
+    Profile,
+    Notification,
+    Dashboard,
+    Message,
+    RestaurantList,
+    PasswordSetting
+} from '../../screens'
 
 const authRoutes = {
+    // Landing,
     LoginAndRegister,
     PasswordSetting
 }

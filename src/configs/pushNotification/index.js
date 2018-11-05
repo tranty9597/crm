@@ -43,4 +43,5 @@ export function pushNotificationConfigue(){
           */
         requestPermissions: true,
       });
+      
 }
