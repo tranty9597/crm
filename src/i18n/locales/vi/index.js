@@ -8,7 +8,7 @@
  * @author ADAMO
  * @since  10/15/2018
  */
-const common= {
+const common = {
   fullName: 'Họ và tên',
   phoneNumber: 'Số điện thoại',
   login: 'Đăng nhập',
@@ -22,7 +22,7 @@ const common= {
 }
 const loginAndRegister = {
   loginAndRegiter_title: 'Khách hàng thân thiết',
-  
+
 }
 
 const passwordSetting = {
@@ -38,11 +38,16 @@ const message = {
   message_unseen: 'Tin Mới'
 }
 
+const restaurantList = {
+  restaurantList_search_hint: 'Tìm nhà hàng bạn muốn order'
+}
+
 const vi = {
   ...common,
   ...loginAndRegister,
   ...passwordSetting,
   ...message,
-
+  ...restaurantList
 };
+
 export default vi;

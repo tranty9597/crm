@@ -1,10 +1,10 @@
 import React from 'react'
-import { Image, StyleSheet, View } from 'react-native'
+import { Image, StyleSheet, View, Keyboard } from 'react-native'
 
 import MapView, { PROVIDER_GOOGLE } from 'react-native-maps'
 import Carousel from 'react-native-snap-carousel';
 
-import { Header } from '../../common'
+import { Header, Input } from '../../common'
 
 import { Container } from '../../layouts';
 import { Color, AppStyle, Sizes, Device } from '../../values';
@@ -12,7 +12,12 @@ import { CarouselItem } from './components';
 import { getLocation } from '../../utils';
 import RenderMarkder from './components/Marker';
 
-class RestaurantList extends React.Component {
+import { strings } from '../../i18n';
+
+const ICON_LOCATION = require('../../assets/image/location/red.png')
+const ICON_DROP = require('../../assets/image/dropdown/dropdown.png')
+
+class RestaurantList extends React.PureComponent {
     static navigationOptions = {
         tabBarIcon: (focused) => {
             return <Image source={focused.focused ? require('../../assets/image/message/active.png') : require('../../assets/image/message/inactive.png')} />
@@ -23,6 +28,7 @@ class RestaurantList extends React.Component {
         this.state = {
             entries: [1, 2, 4, 5],
             curRegion: null,
+            showCarousel: true,
             markers: [
                 {
                     latitude: 21.1142608,
@@ -64,19 +70,39 @@ class RestaurantList extends React.Component {
         );
     }
     render() {
-        let { curRegion, markers } = this.state;
+        let { curRegion, showCarousel } = this.state;
         return (
             <Container style={styles.container}>
-                <Header/>
-                <MapView
-                    region={curRegion}
-                    provider={PROVIDER_GOOGLE}
-                    style={styles.map}
-                >
-                    {this.markers}
-                </MapView>
-                <View style={styles.carouselOverlay}>
+
+                <Header />
+                <View style={styles.map}>
+                    <MapView
+                        region={curRegion}
+                        provider={PROVIDER_GOOGLE}
+                        style={AppStyle.matchParent}
+                    >
+                        {this.markers}
+                    </MapView>
+                </View>
+                <View style={styles.search}>
+                    <Input
+                        onFocus={this._toggleCarouesel}
+                        onBlur={this._toggleCarouesel}
+                        placeholderTextColor={Color.black}
+                        placeholder={strings('restaurantList_search_hint')}
+                        leftIcon={ICON_LOCATION}
+                        rightIcon={ICON_DROP}
+                        onSelect={this._onSelect}
+                        bgColor={Color.white}
+                        autoComlete
+                        data={[{ name: 'tydai ca' }, { name: 'tydai ca' }, { name: 'tydai ca' }, { name: 'tydai ca' }]}
+                    />
+                </View>
+
+                <View style={[styles.carouselOverlay, { height: showCarousel ? (Device.screenHeight * 0.2) : 0 }]}>
+
                     <Carousel
+
                         onSnapToItem={this._onSnapToItem}
                         enableMomentum
                         ref={(c) => { this._carousel = c; }}
@@ -85,18 +111,33 @@ class RestaurantList extends React.Component {
                         sliderWidth={Device.screenWidth - Sizes.MD_GAP * 2}
                         itemWidth={Device.screenWidth - Sizes.MD_GAP * 6}
                     />
+
                 </View>
-            </Container>
+            </Container >
         )
     }
+    /**
+     * @description snap to item in carousel
+     */
     _onSnapToItem = (index) => {
 
-        this.setState({curRegion: {...this.state.curRegion, ...this.state.markers[index]}})
+        this.setState({ curRegion: { ...this.state.curRegion, ...this.state.markers[index] } })
         this.markerRefs[index].marker.showCallout()
     }
+    /**
+     * @description handle onpress event of marker
+     */
     _markerOnpress = (index) => {
         this._carousel.snapToItem(index)
     }
+
+    _onSelect = (item, index) => {
+        this._markerOnpress(index)
+    }
+    _toggleCarouesel = () => {
+        this.setState({ showCarousel: !this.state.showCarousel })
+    }
+
 }
 
 const styles = StyleSheet.create({
@@ -104,16 +145,20 @@ const styles = StyleSheet.create({
         ...AppStyle.matchParent,
     },
     map: {
-        ...StyleSheet.absoluteFill,
+        ...StyleSheet.absoluteFillObject,
         marginTop: Sizes.HEADER_HEIGHT,
-        height: Device.screenHeight - Sizes.HEADER_HEIGHT
     },
     carouselOverlay: {
         ...AppStyle.containerFluid,
         position: 'absolute',
         bottom: 0,
-        height: Device.screenHeight * 0.2,
-        zIndex: 1
+        zIndex: 1,
+    },
+    search: {
+        ...AppStyle.container,
+        position: 'absolute',
+        marginTop: Sizes.HEADER_HEIGHT - Sizes.BUTTON_HEIGHT / 2,
+        zIndex: 2
     }
 })
 export default RestaurantList;

@@ -15,15 +15,22 @@ import {
   StyleSheet,
   Image
 } from "react-native";
+import AutoCompletInput from 'react-native-autocomplete-input'
 
 import { Color, Sizes, AppStyle } from "../../values";
+import CardView from "../CardView";
 
 type InputProps = {
   label: string,
   style: Object,
   leftIcon: any,
   rightIcon: any,
-  placeholder: string
+  placeholder: string,
+  onSelect: func,
+  onBlur: func,
+  onFocus: func,
+  placeholder: string,
+  placeholderTextColor: any
 }
 /**
  * @description render icon btn on input class
@@ -42,28 +49,87 @@ function RenderBtn({ icon, onPress, isLeft }) {
   )
 }
 
-class Input extends React.Component<InputProps> {
+
+function RenderOption({ data, value, onSelect, show }) {
+  return (
+    <React.Fragment>
+      {show && <CardView>
+        <View style={styles.optionContainer}>
+          {data.slice(0, 5).filter(d => d.name.toLowerCase().includes(value.toLowerCase())).map((d, index) => {
+            return (
+              <TouchableOpacity
+                style={styles.option}
+                onPress={() => onSelect(d, index)}
+                key={index}
+              >
+                <Text style={{ ...AppStyle.smText, ...AppStyle.lightWeight }}>{d.name}</Text>
+              </TouchableOpacity>)
+          })}
+        </View>
+      </CardView>}
+    </React.Fragment>
+
+  )
+
+}
+
+class Input extends React.PureComponent<InputProps> {
   constructor(props) {
     super(props);
     this.state = {
+      value: '',
       secureText: true,
+      showOption: false,
     };
   }
+  /**
+   * 
+   * @param {*} str 
+   */
   onChangeText(str) {
+    this.setState({ value: str })
     this.props.onChangeText(str);
   }
+  /**
+   * 
+   */
   showHidePassHandler() {
     this.setState({ secureText: !this.state.secureText });
   }
-
+  /**
+   * 
+   */
+  onFocus = () => {
+    this.setState({ showOption: true })
+    let { onFocus } = this.props;
+    if (onFocus) onFocus()
+  }
+  /**
+   * 
+   */
+  onBlur = () => {
+    this.setState({ showOption: false })
+    let { onBlur } = this.props;
+    if (onBlur) onBlur()
+  }
+  /**
+   * 
+   */
+  onSelect = (item, index) => {
+    this.ip.blur()
+    this.props.onSelect(item, index)
+  }
   render() {
 
-    let { leftIcon, rightIcon, style, label } = this.props
-
-    let secureText = this.state.secureText && this.props.secureTextEntry;
-    let inputComp = secureText ? <TextInput
+    let { leftIcon, rightIcon, style, label, autoComlete, secureTextEntry, data, bgColor } = this.props
+    let { showOption, value } = this.state
+    let secureText = this.state.secureText && secureTextEntry;
+    let inputComp = <TextInput
+      onFocus={this.onFocus}
+      onBlur={this.onBlur}
+      ref={r => this.ip = r}
       maxLength={this.props.maxLength}
-      placeholderTextColor={this.props.placeholderStyle}
+      placeholderTextColor={this.props.placeholderTextColor}
       autoFocus={this.props.autoFocus}
       multiline={this.props.multiline}
       numberOfLines={this.props.numberOfLines}
@@ -71,37 +137,17 @@ class Input extends React.Component<InputProps> {
       onChangeText={str => this.onChangeText(str)}
       autoCapitalize={this.props.keyboardType === "decimal-pad" ? "none" : this.props.autoCapitalize}
       keyboardType={this.props.keyboardType}
-      secureTextEntry={true}
+      secureTextEntry={secureTextEntry}
       placeholder={this.props.placeholder}
-      value={this.props.value}
+      value={value}
       underlineColorAndroid={Color.transparent}
       style={[styles.inputContainer]}
-    /> : <TextInput
-        maxLength={this.props.maxLength}
-        onFocus={this.props.onFocus}
-        ref={(inst) => this.input = inst}
-        placeholderTextColor={this.props.placeholderStyle}
-        autoFocus={this.props.autoFocus}
-        multiline={this.props.multiline}
-        numberOfLines={this.props.numberOfLines}
-        editable={this.props.editable}
-        onChangeText={str => this.onChangeText(str)}
-        autoCapitalize={this.props.autoCapitalize}
-        keyboardType={this.props.keyboardType}
-        secureTextEntry={false}
-        placeholder={this.props.placeholder}
-        value={this.props.value}
-        underlineColorAndroid={Color.transparent}
-        onBlur={this.props.onBlur}
-        onKeyPress={(e) => this.props.onKeyPress(e)}
-        defaultValue={this.props.defaultValue}
-        style={[styles.inputContainer]}
-      />
+    />
     return (
       <View style={style}>
         {label && <Text style={[AppStyle.smText, AppStyle.mdWeight, { marginBottom: Sizes.SM_GAP }]}>{label}</Text>}
         <View
-          style={[styles.container]}
+          style={[styles.container, { backgroundColor: bgColor || Color.whiteGray }]}
         >
           <RenderBtn isLeft icon={leftIcon} onPress={() => { }} />
           {inputComp}
@@ -118,6 +164,13 @@ class Input extends React.Component<InputProps> {
           )}
           <RenderBtn icon={rightIcon} onPress={() => { }} />
         </View>
+        {autoComlete && <RenderOption
+          show={showOption}
+          data={data}
+          value={value}
+          onSelect={this.onSelect}
+        />
+        }
       </View>
 
     );
@@ -145,11 +198,10 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: Sizes.BUTTON_HEIGHT,
     width: '100%',
-    borderRadius: Sizes.BORDER_RADIUS,
-    backgroundColor: Color.whiteGray
+    borderRadius: Sizes.BORDER_RADIUS
   },
   inputContainer: {
-    width: '85%',
+    width: '70%',
     backgroundColor: Color.transparent
   },
   errContainer: {
@@ -161,6 +213,19 @@ const styles = StyleSheet.create({
     ...AppStyle.flexCenter,
     width: '10%',
     height: '100%'
+  },
+  optionContainer: {
+    ...AppStyle.containerFluid,
+    ...AppStyle.marginTopSm,
+    backgroundColor: Color.white
+  },
+  option: {
+    height: Sizes.BUTTON_HEIGHT,
+    ...AppStyle.hr,
+    margin: 0,
+    padding: Sizes.SM_GAP,
+    paddingLeft: Sizes.MD_GAP,
+    ...AppStyle.justifyContentCenter
   }
 })
 export default Input;

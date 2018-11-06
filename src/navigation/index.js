@@ -8,7 +8,7 @@ const AppNavigation = createSwitchNavigator({
     AuthenFlow,
     AppFlow
 },{
-    initialRouteName: 'AuthenFlow'
+    initialRouteName: 'AppFlow'
 })
 
 export default AppNavigation
