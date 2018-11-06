@@ -34,6 +34,7 @@ type ButtonProps = {
     leftIcon: any,
     rightIcon: any,
     onPress: Function,
+    title: string
 }
 
 class Button extends React.PureComponent<ButtonProps> {

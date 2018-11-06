@@ -99,7 +99,7 @@ class RestaurantList extends React.PureComponent {
                     />
                 </View>
 
-                <View style={[styles.carouselOverlay, { height: showCarousel ? (Device.screenHeight * 0.2) : 0 }]}>
+                <View style={[styles.carouselOverlay, { width: showCarousel ? '100%' : 0 }]}>
 
                     <Carousel
 
@@ -151,7 +151,7 @@ const styles = StyleSheet.create({
     carouselOverlay: {
         ...AppStyle.containerFluid,
         position: 'absolute',
-        bottom: 0,
+        bottom: Sizes.MD_GAP,
         zIndex: 1,
     },
     search: {

@@ -5,7 +5,7 @@ import { Color } from '../../../values';
 
 const MainBottomTabFlow = createBottomTabNavigator(mainBottomTabRoutes,
     {
-        initialRouteName: 'RestaurantList',
+        initialRouteName: 'Dashboard',
         tabBarOptions:{
             inactiveTintColor: Color.redOrange,
             showLabel: false,

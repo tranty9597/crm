@@ -17,6 +17,7 @@ function CarouselItem({ props }) {
 const styles = StyleSheet.create({
     container: {
         ...AppStyle.containerFluid,
+        ...AppStyle.row,
         borderRadius: Sizes.BORDER_RADIUS,
         backgroundColor: Color.white,
         height: 120
